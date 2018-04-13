@@ -1,0 +1,47 @@
+@using TodoApi;
+@addTagHelper *, Microsoft.AspNetCore.Mvc.TagHelpers
+@addTagHelper AuthoringTagHelpers.TagHelpers.EmailTagHelper, AuthoringTagHelpers
+@using TodoApi.Models;
+@model TodoApi.Models.Category
+
+@{
+    List<Category>listTemp=(List<Category>)ViewData["category"];
+    
+    string sortBy=ViewData["sortBy"].ToString();
+    
+     <form class="form-inline" action="/Category/GetAllCategory" method="GET"style="margin:10px;">
+             <input class="form-control" name="searchC" type="text" placeholder="Search">
+            <button class="btn btn-success" type="submit">Search</button>
+    </form>
+
+<table class="table">
+            <thead>
+                     
+          <th> @Html.ActionLink("Category ID","GetAllCategory","Category",new {sortBy="categoryID"} )</th>
+          <th> @Html.ActionLink("Category Name","GetAllCategory","Category",new {sortBy="categoryName"} )</th>
+          <th> @Html.ActionLink("Description","GetAllCategory","Category",new {sortBy="description"} )</th>
+         
+          
+           
+           
+              
+            </thead>
+            
+            
+            @foreach(Category x in listTemp)
+            {
+                <tr>
+                   
+                    
+                        <td> @x.categoryID</td>
+                        <td> @x.categoryName</td>
+                        <td> @x.description</td>
+                       
+                        
+                    
+
+                </tr>
+              }
+                
+            </table>
+}

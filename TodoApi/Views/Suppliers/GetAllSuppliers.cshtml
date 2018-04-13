@@ -1,0 +1,68 @@
+@using TodoApi
+@addTagHelper *, Microsoft.AspNetCore.Mvc.TagHelpers
+@addTagHelper AuthoringTagHelpers.TagHelpers.EmailTagHelper, AuthoringTagHelpers
+@using TodoApi.Models;
+@model TodoApi.Models.Suppliers
+
+@{
+    List <Suppliers>listTemp=(List<Suppliers>)ViewData["suppliers"];
+    string sortBy=ViewData["sortBy"].ToString();
+
+         <form class="form-inline" action="/Suppliers/GetAllSuppliers" method="GET"style="margin:10px;">
+             <input class="form-control" name="searchS" type="text" placeholder="Search">
+            <button class="btn btn-success" type="submit">Search</button>
+    </form>
+
+    <table class="table">
+            <thead>
+            <th> @Html.ActionLink("Supplier ID","GetAllSuppliers","Suppliers",new {sortBy="supplierID"} )</th>
+            <th> @Html.ActionLink("Company Name","GetAllSuppliers","Suppliers",new {sortBy="companyname"} )</th>
+            <th> @Html.ActionLink("Contact Name","GetAllSuppliers","Suppliers",new {sortBy="contactname"} )</th>
+            <th> @Html.ActionLink("Contact Tittle","GetAllSuppliers","Suppliers",new {sortBy="contacttitle"} )</th>
+            <th> @Html.ActionLink("Address","GetAllSuppliers","Suppliers",new {sortBy="address"} )</th>
+            <th> @Html.ActionLink("city","GetAllSuppliers","Suppliers",new {sortBy="city"} )</th>
+            <th> @Html.ActionLink("region","GetAllSuppliers","Suppliers",new {sortBy="region"} )</th>
+            <th> @Html.ActionLink("country","GetAllSuppliers","Suppliers",new {sortBy="country"} )</th>
+            <th> @Html.ActionLink("postal Code","GetAllSuppliers","Suppliers",new {sortBy="postalcode"} )</th>
+            <th> @Html.ActionLink("Phone","GetAllSuppliers","Suppliers",new {sortBy="phone"} )</th>
+            <th> @Html.ActionLink("fax","GetAllSuppliers","Suppliers",new {sortBy="fax"} )</th>
+         
+          
+           
+          
+           
+         
+   
+              
+            </thead>
+            
+            
+            @foreach(Suppliers x in listTemp)
+            {
+                <tr>
+                   
+                    
+                       
+                          <td> @x.supplierID</td>
+                        <td> @x.companyName</td>
+                        <td> @x.contactName</td>
+                        <td> @x.contacttitle</td>
+                        <td> @x.address</td>
+                        <td> @x.city</td>
+                        <td> @x.region</td>
+                        <td> @x.postalCode</td>
+                        <td> @x.country</td>
+                        <td> @x.phone</td>
+                        <td> @x.fax</td>
+
+                   
+                       
+                        
+                    
+
+                </tr>
+              }
+                
+            </table>
+
+}

@@ -1,0 +1,20 @@
+
+@using TodoApi;
+@addTagHelper *, Microsoft.AspNetCore.Mvc.TagHelpers
+@addTagHelper AuthoringTagHelpers.TagHelpers.EmailTagHelper, AuthoringTagHelpers
+@using TodoApi.Models;
+@model TodoApi.Models.Category
+
+<form asp-controller="Category" asp-action="AddCategory" >
+           </br>
+           
+             <input asp-for="categoryName"class="form-control" style="width:450px; margin:20px; margin-left: auto; margin-right: auto;"  type="text" placeholder="category name"/>
+             <input asp-for="description"class="form-control" style="width:450px; margin:20px; margin-left: auto; margin-right: auto;"  type="text" placeholder="description"/>
+          
+          
+                
+                
+               <input type="submit"/>   
+               
+       
+    </form>

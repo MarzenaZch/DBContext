@@ -1,0 +1,69 @@
+@using TodoApi;
+@addTagHelper *, Microsoft.AspNetCore.Mvc.TagHelpers
+@addTagHelper AuthoringTagHelpers.TagHelpers.EmailTagHelper, AuthoringTagHelpers
+@using TodoApi.Models;
+<h1>@ViewData["przywitanie"]</h1>
+    @{
+        List<Product>listTemp=(List<Product>)ViewData["products"];///konwersa z obiektu na liste stringow
+        string baseUrl="http://localhost:5000/Products/GetAllProducts?sortBy=";//link do wyszukiwania zmienna podpieta do th i wyszukiwanie do odpowiedniego elemntu 
+        //foreach (Product x in listTemp)
+        int currentPage=int.Parse(ViewData["currentPage"].ToString());
+        string nextPage=@baseUrl+"?page="+(@currentPage+1).ToString();
+        string backPage=@baseUrl+"?page="+(@currentPage-1).ToString();
+        string sortBy=ViewData["sortBy"].ToString();
+        {
+     
+     <form class="form-inline" action="/Products/GetAllProducts" method="GET">
+             <input class="form-control" name="searchP" type="text" placeholder="Search" required>
+            <button class="btn btn-success" type="submit">Search</button>
+    </form>
+
+    
+    
+
+    
+            <table class="table">
+            <thead>
+           <th> @Html.ActionLink("ProductID","GetAllProducts","Products",new {sortBy="ProductID",page=currentPage} )</th>
+           <th> @Html.ActionLink("ProductName","GetAllProducts","Products",new {sortBy="ProductName",page=currentPage} )</th>
+           <th> @Html.ActionLink("SupplierID","GetAllProducts","Products",new {sortBy="SupplierID",page=currentPage} )</th>
+           <th> @Html.ActionLink("CategoryID","GetAllProducts","Products",new {sortBy="CategoryID",page=currentPage} )</th>
+           <th> @Html.ActionLink("UnitPrice","GetAllProducts","Products",new {sortBy="UnitPrice",page=currentPage} )</th>
+           <th> @Html.ActionLink("Discontinued","GetAllProducts","Products",new {sortBy="Discontinued",page=currentPage} )</th>
+              
+            </thead>
+            
+            
+            @foreach(Product x in listTemp)
+            {
+                <tr>
+                   
+                    
+                        <td> @x.ProductID</td>
+                        <td> @x.ProductName</td>
+                        <td> @x.SupplierID</td>
+                        <td> @x.CategoryID</td>
+                        <td> @x.UnitPrice</td>
+                        <td> @x.Discontinued</td>
+                        
+                    
+
+                </tr>
+              }
+                
+            </table>
+            int nextP=currentPage+1;
+            int backP=currentPage-1;
+            //@Html.ActionLink("NEXT","GetAllProducts","Products",new {sortBy=sortBy,page=currentPage+1} )
+            //@Html.ActionLink("BACK","GetAllProducts","Products",new {sortBy=sortBy,page=currentPage-1} )
+            //<a href="@nextPage"><button type="button" class="btn">next</button></a>
+            //<a href="@backPage"><button type="button" class="btn">back</button></a>
+            
+            <a asp-controller="Products",asp-action="GetAllProducts", asp-route-sortBy=@sortBy asp-route-page=@nextP><button type="button" class="btn">next</button></a>
+             <a asp-controller="Products",asp-action="GetAllProducts", asp-route-sortBy=@sortBy asp-route-page=@backP><button type="button" class="btn">back</button></a>
+            
+
+            
+        }
+
+    }

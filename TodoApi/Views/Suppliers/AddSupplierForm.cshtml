@@ -1,0 +1,28 @@
+
+@using TodoApi
+@addTagHelper *, Microsoft.AspNetCore.Mvc.TagHelpers
+@addTagHelper AuthoringTagHelpers.TagHelpers.EmailTagHelper, AuthoringTagHelpers
+@using TodoApi.Models;
+@model TodoApi.Models.Suppliers
+
+<form asp-controller="Suppliers" asp-action="AddSupplier" >
+           </br>
+           
+             <input asp-for="companyName"class="form-control" style="width:450px; margin:20px; margin-left: auto; margin-right: auto;"  type="text" placeholder="company name" required/>
+             <input asp-for="contactName"class="form-control" style="width:450px; margin:20px; margin-left: auto; margin-right: auto;"  type="text" placeholder="contact name" required />
+             <input asp-for="contacttitle"class="form-control" style="width:450px; margin:20px; margin-left: auto; margin-right: auto;"  type="text" placeholder="contact title" required/>
+             <input asp-for="address"class="form-control" style="width:450px; margin:20px; margin-left: auto; margin-right: auto;"  type="text" placeholder="address" required/>
+             <input asp-for="city"class="form-control" style="width:450px; margin:20px; margin-left: auto; margin-right: auto;"  type="text" placeholder="city" required/>
+             <input asp-for="region"class="form-control" style="width:450px; margin:20px; margin-left: auto; margin-right: auto;"  type="text" placeholder="region" required/>
+             <input asp-for="postalCode"class="form-control" style="width:450px; margin:20px; margin-left: auto; margin-right: auto;"  type="text" placeholder="postalcode" required/>
+             <input asp-for="country"class="form-control" style="width:450px; margin:20px; margin-left: auto; margin-right: auto;"  type="text" placeholder="country" required/>
+             <input asp-for="phone"class="form-control" style="width:450px; margin:20px; margin-left: auto; margin-right: auto;"  type="text" placeholder="phone" required/>
+             <input asp-for="fax"class="form-control" style="width:450px; margin:20px; margin-left: auto; margin-right: auto;"  type="text" placeholder="fax" required/>
+          
+          
+                
+                
+               <input type="submit"/>   
+               
+       
+    </form>
